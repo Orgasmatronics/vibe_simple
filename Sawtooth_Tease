@@ -1,0 +1,32 @@
+/*
+ Sawtooth Tease
+ 
+ Increasingly slow tease code
+ 
+CopyLeft Orgasmatronics, Inc. distribute as you see fit
+ */
+
+int led = 3;           // the pin that the vibe is attached to
+int brightness = 40;   // vibe speed(adapated from LED code)
+int fadeAmount = 1;    // step size
+int motordelay = 0;    //delay in ms
+int delayindex = 0;
+
+// the setup routine runs once when you press reset:
+void setup()  { 
+  // declare pin 3 to be an output:
+  pinMode(led, OUTPUT);
+} 
+
+// the loop routine runs over and over again forever:
+void loop()  { 
+  
+  for(delayindex = 1;delayindex <= 8;delayindex++){
+      for(brightness = 40;brightness <= 255;brightness = brightness+fadeAmount){
+      // set the brightness of pin 9: 
+      analogWrite(led, brightness);        
+      motordelay = delayindex*118;
+      delay(motordelay);                            
+      }
+  }
+}
